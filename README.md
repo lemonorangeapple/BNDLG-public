@@ -6,7 +6,7 @@ Baidu Netdisk Download Link Get
 2. 仅使用百度官方api接口
 
 安装教程：
-1. [fork](https://github.com/lemonorangeapple/BNDLG-public/fork)仓库
+1. [fork](https://github.com/lemonorangeapple/BNDLG-public/fork)本仓库。
 2. 部署后端：
    1. 将`backend/worker.js`中文件的代码复制。
    2. 在[Cloudflare Worker](https://workers.cloudflare.com/)创建一个worker。
