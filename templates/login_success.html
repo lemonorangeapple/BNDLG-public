@@ -1,0 +1,12 @@
+<script>
+    function _onload() {
+        access_token = location.hash.split("=")[2].split("&")[0];
+        document.getElementById("access_token").value = access_token;
+        document.getElementById("form").submit();
+    }
+</script>
+<body onload="_onload()">
+<form id="form" action="/login_success" method="post">
+    <input type="password" id="access_token" name="access_token"/>
+</form>
+</body>

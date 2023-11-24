@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="list-group m-3">
+            {% for i in lst %}
+                {% if i['isdir'] == 0 %}
+                    <a class="list-group-item list-group-item-action" href="/download?fs_id={{ i['fs_id'] }}&access_token={{ access_token }}">{{ i['path'] }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </body>
+</html>
