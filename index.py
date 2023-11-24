@@ -34,5 +34,5 @@ def download():
     access_token = request.values.get("access_token")
     dlink = json.loads(requests.get("https://pan.baidu.com/rest/2.0/xpan/multimedia?method=filemetas&dlink=1&fsids=[" + fsid + "]&access_token=" + access_token).text)["list"][0]["dlink"]
     dlink = dlink + '&access_token=' + access_token
-    dlink = dlink.replace("d.pcs.baidu.com", api_link)
-    return redirect(dlink)
+    link = requests.get(dlink, allow_redirects=False).headers.get('Location')
+    return redirect(link)
