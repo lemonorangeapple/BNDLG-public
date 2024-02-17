@@ -8,6 +8,11 @@ app = Flask(__name__)
 url_front = "http://openapi.baidu.com/oauth/2.0/authorize?response_type=token&client_id=" + client_id + "&redirect_uri="
 url_end = "&scope=basic,netdisk"
 
+headers={
+    "User-Agent": "pan.baidu.com",
+    "Host": "d.pcs.baidu.com"
+}
+
 @app.route("/", methods = ["GET", "POST"])
 def index():
     if request.method == "GET":
@@ -34,5 +39,7 @@ def download():
     access_token = request.values.get("access_token")
     dlink = json.loads(requests.get("https://pan.baidu.com/rest/2.0/xpan/multimedia?method=filemetas&dlink=1&fsids=[" + fsid + "]&access_token=" + access_token).text)["list"][0]["dlink"]
     dlink = dlink + '&access_token=' + access_token
-    link = requests.get(dlink, allow_redirects=False).headers.get('Location')
+    payload = {}
+    files = {}
+    link = requests.request("GET", dlink, headers=headers, data = payload, files = files, allow_redirects=False).headers.get('location')
     return redirect(link)
