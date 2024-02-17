@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/bootstrap.min.css">
+        <script>
+            function copy() {
+                navigator.clipboard.writeText(document.getElementById('data').innerText);
+                alert("复制成功！");
+            }
+        </script>
+    </head>
+    <body class="m-3 p-2">
+        <button id="copy" onclick="copy()" class="btn btn-primary">点击复制</button>
+        <p></p>
+        <p>链接为：<code id="data">{{ link }}</code></p>
+    </body>
+</html>
