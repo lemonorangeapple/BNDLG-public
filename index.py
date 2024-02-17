@@ -42,4 +42,4 @@ def download():
     payload = {}
     files = {}
     link = requests.request("GET", dlink, headers=headers, data = payload, files = files, allow_redirects=False).headers.get('location')
-    return redirect(link)
+    return render_template('copy.html', link = link)
